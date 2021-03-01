@@ -1,51 +1,31 @@
-package ru.pirozhkov.crm.entities;
+package ru.pirozhkov.crm.data;
+
+import com.sun.istack.NotNull;
+import ru.pirozhkov.crm.entities.Contract;
+import ru.pirozhkov.crm.entities.Role;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserData {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "id", length = 32, nullable = false)
+    @NotNull
     private String name;
 
-    @Column(name = "password",length = 128, nullable = false)
+    @NotNull
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-
-    @OneToMany(mappedBy = "users")
     private List<Contract> contractList = new ArrayList<>();
 
-    @Column(name = "first_name", length = 32)
     private String firstName;
 
-    @Column(name = "last_name", length = 32)
     private String lastName;
-
-    public User() {
-    }
-
-    public User(Long id, String name, String password, String firstName, String lastName) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     public Long getId() {
         return id;
@@ -79,6 +59,14 @@ public class User {
         this.roles = roles;
     }
 
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -95,11 +83,16 @@ public class User {
         this.lastName = lastName;
     }
 
-    public List<Contract> getContractList() {
-        return contractList;
-    }
-
-    public void setContractList(List<Contract> contractList) {
-        this.contractList = contractList;
+    @Override
+    public String toString() {
+        return "UserData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                ", contractList=" + contractList +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

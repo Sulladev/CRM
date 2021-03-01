@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product implements Serializable {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,23 +20,17 @@ public class Product implements Serializable {
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne(optional = false)
-    private Category category;
-
-    @ManyToOne(optional = false)
-    private Brand brand;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Picture> pictures;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Product() {
     }
 
-    public Product(String name, BigDecimal price, Category category, Brand brand) {
+    public Product(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
-        this.category = category;
-        this.brand = brand;
+
     }
 
     public Long getId() {
@@ -63,27 +57,4 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public List<Picture> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(List<Picture> pictures) {
-        this.pictures = pictures;
-    }
 }
