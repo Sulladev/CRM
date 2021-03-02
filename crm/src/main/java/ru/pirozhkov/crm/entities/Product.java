@@ -2,29 +2,35 @@ package ru.pirozhkov.crm.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    @Column(name = "price")
+    private BigDecimal price;
 
-    public Role() {
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    public Product() {
     }
 
-    public Role(String name) {
+    public Product(String name, BigDecimal price) {
         this.name = name;
+        this.price = price;
+
     }
 
     public Long getId() {
@@ -43,13 +49,12 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
-
 
 }
