@@ -1,6 +1,7 @@
 package ru.pirozhkov.crm.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.pirozhkov.crm.data.UserData;
 import ru.pirozhkov.crm.entities.User;
 import ru.pirozhkov.crm.repositories.UserRepository;
@@ -8,6 +9,7 @@ import ru.pirozhkov.crm.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService {
 
     private UserRepository userRepository;

@@ -1,5 +1,7 @@
 package ru.pirozhkov.crm.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "contracts")
+@Getter
+@Setter
 public class Contract {
 
     @Id
@@ -45,76 +49,4 @@ public class Contract {
     @JoinColumn(name = "user_id")
     private User user;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getOpenDate() {
-        return openDate;
-    }
-
-    public void setOpenDate(Date openDate) {
-        this.openDate = openDate;
-    }
-
-    public Date getCloseDate() {
-        return closeDate;
-    }
-
-    public void setCloseDate(Date closeDate) {
-        this.closeDate = closeDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
