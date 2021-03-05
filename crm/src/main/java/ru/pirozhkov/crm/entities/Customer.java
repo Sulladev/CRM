@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,8 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class Customer {
     @Id

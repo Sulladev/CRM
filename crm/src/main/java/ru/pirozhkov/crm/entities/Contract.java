@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,8 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "contracts")
-@Getter
-@Setter
+@Data
 public class Contract {
 
     @Id

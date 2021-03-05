@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,8 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "payments")
-@Getter
-@Setter
+@Data
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

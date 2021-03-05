@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pirozhkov.crm.entities.Customer;
 import ru.pirozhkov.crm.entities.Product;
@@ -13,6 +14,7 @@ public class CustomerService {
 
     private CustomerRepository customerRepository;
 
+    @Autowired
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }

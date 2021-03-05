@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pirozhkov.crm.entities.Payment;
 import ru.pirozhkov.crm.entities.Product;
@@ -13,6 +14,7 @@ public class PaymentService   {
 
     private PaymentRepository paymentRepository;
 
+    @Autowired
     public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
