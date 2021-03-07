@@ -1,5 +1,6 @@
 package ru.pirozhkov.crm.services;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pirozhkov.crm.entities.Role;
@@ -9,15 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class RoleService {
 
     private RoleRepository roleRepository;
-
-    @Autowired
-    public RoleService(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
 
     public void save(Role role) {
         roleRepository.save(role);
